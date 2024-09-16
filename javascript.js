@@ -1,3 +1,7 @@
+function startGame(){
+// clear console before everygame 
+console.clear()
+
 console.log(`%cReady to play the game?`,
     `font-size: 16px; color: gold; font-weight: 1000`)
 
@@ -20,7 +24,9 @@ function getHumanChoice(){
     toLower = humanPick.toLowerCase()
     //checking to see if it falls within one of the choices
     if (toLower != "rock" && toLower != "paper" && toLower != "scissors"){
-        console.log("That is an incorrect choice!")
+        console.log(`%cThat is an incorrect choice!`,
+            `font-size: 16px; color: red; font-weight: 1000`
+        )
         return getHumanChoice()
     }else {
         return toLower
@@ -62,7 +68,7 @@ for (let round = 1; round <= 5; round ++){
     //if tie, allows for an additional round
     if (humanSelection === computerSelection){
         console.log(`%cIt Was A Tie, Try Again`,
-            `color: red; font-weight: 1000`
+            `color: pink; font-weight: 1000`
         )
         round--;
     }
@@ -78,7 +84,7 @@ for (let round = 1; round <= 5; round ++){
         `color: red; font-size: 16px; font-weight: 1000`
     )
 }
-//winning system
+//winning system`~
 if (humanScore > computerScore){
     console.log(`%cYou Won The Game By A ${humanScore - computerScore} Point Difference` + `  :)`,
         `color: lime; font-size: 20px; font-weight: 1000`
@@ -90,4 +96,5 @@ if (humanScore > computerScore){
     )
 }else {
     console.log("It's a Tie!")
+}
 }
