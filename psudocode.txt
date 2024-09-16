@@ -1,0 +1,64 @@
+Steps for RPS
+
+
+Set Choices = "rock, paper, scizzors,"
+
+function called getComputerChoice()
+    get random number 1,2,3 and assign to a variable
+        use the math.random function
+    if 0, Rock
+        return rock
+    if 1, Paper
+        return paper
+    if 2, scizzors
+        return scizzors
+
+function called getHumanChoice()
+    prompt human with Choices variable and assign to variable "choice"
+    if choice doesn't match the choices, return getHumanChoice() and say invalid choice
+    else return choice
+
+create 2 varible name humanscore and computer score and equal to 0
+    (put this inside the playRound function)
+
+function call playRound with humanChoice and computerChoice
+    make a varible to make all human choices lowercase (toLowerCase)
+
+    if humanChoice and computerChoice = the same this
+        return tie
+
+    if humanChoice is rock and computerChoice is paper
+        computerscore + 1
+
+    if humanChoice is rock and computerChoice is scizzors
+        humanscore + 1
+
+    if humanChoice is paper and computerChoice is scizzors
+        computerscore + 1 
+
+    if humanChoice is paper and computerChoice is rock
+        humanscore + 1 
+
+    if humanChoice is scizzors and computerChoice is rock
+        computerscore + 1 
+
+    if humanChoice is scizzors and computerChoice is paper
+        humanscore + 1
+
+
+create a variable name round to limit the amount of rounds played
+    make a for loop that checks the round count is below 5
+    after each round + 1 to round varible
+    if it is below 5, it will return playRound()
+
+
+set a constant humanSelection to equal getHumanChoice()
+set a constant computerSelection to equal getComputerChoice()
+
+call function playRound with 2 new constants
+
+function playRound (humanChoice, computerChoice)
+
+playRound(humanSelection, computerSelection)
+
+getComputerChoice => computerSelection => computerChoice
