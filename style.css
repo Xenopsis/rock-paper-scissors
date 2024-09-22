@@ -1,0 +1,22 @@
+button img {
+    height: 150px;
+    width: 150px;
+    border-radius: 20%;
+}
+button {
+    background-color: transparent;
+    border-radius: 50%;
+    border: 0px solid transparent;
+}
+
+#gameplay, .choices {
+    display: flex;
+    justify-content: center;
+}
+#gameplay img {
+    height: 175px;
+    width: 175px;
+}
+#gameplay {
+    height: 200px;
+}
