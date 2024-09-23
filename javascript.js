@@ -2,6 +2,7 @@ const buttons = document.querySelectorAll(".choices button")
 const gameplay = document.querySelector("#gameplay")
 const compScoreBoard = document.querySelector(".computerscore")
 const humanScoreBoard = document.querySelector(".humanscore")
+const bestOf = document.querySelectorAll(".bestOf button")
 
 let humanChoice;
 let computerChoice;
@@ -9,8 +10,10 @@ let computerChoice;
 let computerScore = 0
 let humanScore = 0
 
+let roundCount = 3
+
 const computerPoints = document.createElement("div")
-computerPoints.classList.add("choice")
+computerPoints.classList.add("points")
 computerPoints.textContent = computerScore
 
 const humanPoints = document.createElement("div");
@@ -19,6 +22,13 @@ humanPoints.textContent = humanScore
 
 humanScoreBoard.appendChild(humanPoints)
 compScoreBoard.appendChild(computerPoints)
+
+bestOf.forEach((round) => {
+    round.addEventListener('click', () => {
+        roundCount = parseInt(round.value)
+        console.log(roundCount)
+    })
+})
 
 function getComputerChoice(){
     //Picks a random number 0-2
@@ -47,6 +57,12 @@ function gameLogic (humanChoice, computerChoice){
     }
     humanPoints.textContent = humanScore
     computerPoints.textContent = computerScore
+
+    if (humanScore === Math.ceil((roundCount + 1) / 2)){
+        console.log("You Win")
+    } else if (computerScore === Math.ceil((roundCount + 1) / 2)){
+        console.log("Computer Wins")
+    }
 }
 
 buttons.forEach((button) => {
@@ -60,40 +76,41 @@ buttons.forEach((button) => {
 
         if (button.value === "rock"){
             const choice = document.createElement("img")
-            choice.classList.add("myChoice")
+            choice.classList.add("choice")
             choice.src = "./pictures/rock.png"
             gameplay.appendChild(choice)
 
         }else if (button.value === "paper"){
             const choice = document.createElement("img")
-            choice.classList.add("myChoice")
+            choice.classList.add("choice")
             choice.src = "./pictures/paper.png"
             gameplay.appendChild(choice)
 
         }else if (button.value === "scissors"){
             const choice = document.createElement("img")
-            choice.classList.add("myChoice")
+            choice.classList.add("choice")
             choice.src = "./pictures/scissors.png"
             gameplay.appendChild(choice)
         }
       
         if (computerChoice === "rock"){
             const compPick = document.createElement("img")
-            compPick.classList.add("computerChoice")
+            compPick.classList.add("choice")
             compPick.src = "./pictures/rock.png"
             gameplay.appendChild(compPick)
 
         }else if (computerChoice === "paper"){
             const compPick = document.createElement("img")
-            compPick.classList.add("computerChoice")
+            compPick.classList.add("choice")
             compPick.src = "./pictures/paper.png"
             gameplay.appendChild(compPick)
 
         }else if (computerChoice === "scissors"){
             const compPick = document.createElement("img")
-            compPick.classList.add("computerChoice")
+            compPick.classList.add("choice")
             compPick.src = "./pictures/scissors.png"
             gameplay.appendChild(compPick)
         }
     })
 })
+

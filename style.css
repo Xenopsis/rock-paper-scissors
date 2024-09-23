@@ -1,7 +1,41 @@
+* {
+    text-align: center;
+}
+body {
+    background-image:radial-gradient(#354c7c, #b0b8ce, #354c7c)
+}
 button img {
     height: 150px;
     width: 150px;
     border-radius: 20%;
+    transition: all .3s ease 0s;
+    margin: 10px;
+}
+
+.bestOf button{
+    background-color: transparent;
+    border-radius: 15px;
+    height: 45px;
+    width: 125px;
+    margin: 20px 15px 10px;
+    border: 2px solid black;
+    font-size: 15px;
+    font-weight: 1000;
+    transition: all .3s ease 0s;
+}
+
+.bestOf button:hover{
+    background-color: #b0b8ce;
+    width: 130px;
+
+}
+.bestOf {
+    display: flex;
+    justify-content: center;
+}
+button img:hover{
+    height: 160px;
+    width: 160px;
 }
 button {
     background-color: transparent;
@@ -19,4 +53,37 @@ button {
 }
 #gameplay {
     height: 200px;
+}
+.score, .points {
+    margin: 25px;
+}
+.scores {
+    display: flex;
+    justify-content: space-between;
+    border: 8px solid #b0b8ce;
+    margin: 25px 120px;
+    font-size: larger;
+    font-weight: 1000;
+    background-color: #354c7c;
+    border-radius: 20px;
+    color: antiquewhite;
+}
+
+.box {
+    background-color: gray;
+    border: 10px solid bisque;
+    width: 600px;
+    height: 200px;
+    display: flex;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.choice {
+    padding: 10px 75px;
+}
+
+.choices {
+    padding-top: 20px ;
 }
