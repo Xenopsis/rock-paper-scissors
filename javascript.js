@@ -1,8 +1,12 @@
+function startGame (){
+
 const buttons = document.querySelectorAll(".choices button")
 const gameplay = document.querySelector("#gameplay")
 const compScoreBoard = document.querySelector(".computerscore")
 const humanScoreBoard = document.querySelector(".humanscore")
 const bestOf = document.querySelectorAll(".bestOf button")
+const winMessage = document.querySelector("#win");
+const resetButton = document.querySelector("#resetButton")
 
 let humanChoice;
 let computerChoice;
@@ -26,7 +30,6 @@ compScoreBoard.appendChild(computerPoints)
 bestOf.forEach((round) => {
     round.addEventListener('click', () => {
         roundCount = parseInt(round.value)
-        console.log(roundCount)
     })
 })
 
@@ -42,6 +45,7 @@ function getComputerChoice(){
         return "scissors"
     }
 }
+let gameOver = false
 
 function gameLogic (humanChoice, computerChoice){
     if (humanChoice === computerChoice){
@@ -55,18 +59,38 @@ function gameLogic (humanChoice, computerChoice){
     }else {
         computerScore++;
     }
+
     humanPoints.textContent = humanScore
     computerPoints.textContent = computerScore
 
-    if (humanScore === Math.ceil((roundCount + 1) / 2)){
-        console.log("You Win")
-    } else if (computerScore === Math.ceil((roundCount + 1) / 2)){
-        console.log("Computer Wins")
+    if (computerScore === Math.ceil((roundCount + 1) / 2)){
+        const computerWin = document.createElement("div");
+        computerWin.classList.add("winner")
+        computerWin.textContent = `The computer won with a ${computerScore - humanScore} point lead!`
+        winMessage.appendChild(computerWin)
+        gameOver = true
+
+    } else if (humanScore === Math.ceil((roundCount + 1) / 2)){
+        const humanWin = document.createElement("div");
+        humanWin.classList.add("winner")
+        humanWin.textContent = `You won with a ${humanScore - computerScore} point lead!`
+        winMessage.appendChild(humanWin)
+        gameOver = true
+
     }
 }
 
 buttons.forEach((button) => {
     button.addEventListener('click', () =>{
+        if (gameOver) {
+            humanScore = 0;
+            computerScore = 0;
+            humanPoints.textContent = humanScore;
+            computerPoints.textContent = computerScore;
+            winMessage.innerHTML = "";
+            gameOver = false;  // Reset the flag
+            return;
+        }
         gameplay.innerHTML = ""
 
         humanChoice = button.value;
@@ -114,3 +138,40 @@ buttons.forEach((button) => {
     })
 })
 
+// let pointsToWin = ((bestOf.value + 1) / 2);
+
+// if (computerScore === pointsToWin) {
+//     const computerWin = document.createElement("div");
+//     computerWin.classList.add("winner")
+//     computerWin.textContent = `The computer won with a ${computerScore - humanScore} lead!`
+//     humanScore = 0
+//     computerScore = 0
+//     winMessage.appendChild(computerWin)
+//     (humanPoints).textContent = humanScore;
+//     (computerPoints).textContent = computerScore
+
+// }else if (humanScore === pointsToWin) {
+//     const humanWin = document.createElement("div");
+//     humanWin.classList.add("winner")
+//     humanWin.textContent = `You won with a ${humanScore - computerScore} lead!`
+//     humanScore = 0
+//     computerScore = 0
+//     winMessage.appendChild(humanWin)
+//     (humanPoints).textContent = humanScore;
+//     (computerPoints).textContent = computerScore
+
+// }
+
+// This is for the winning system and once the winning score is achieved, it will show the message with the resetting the score
+resetButton.addEventListener('click', () => {
+    humanScore = 0;
+    computerScore = 0;
+    humanPoints.textContent = humanScore;
+    computerPoints.textContent = computerScore;
+    winMessage.innerHTML = ""
+    humanScoreBoard.removeChild(humanPoints)
+    compScoreBoard.removeChild(computerPoints)
+    startGame()
+});
+}
+startGame()
