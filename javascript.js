@@ -137,18 +137,5 @@ buttons.forEach((button) => {
         }
     })
 })
-
-// This is for the winning system and once the winning score is achieved, it will show the message with the resetting the score
-resetButton.addEventListener('click', () => {
-    humanScore = 0;
-    computerScore = 0;
-    humanPoints.textContent = humanScore;
-    computerPoints.textContent = computerScore;
-    winMessage.innerHTML = ""
-    humanScoreBoard.removeChild(humanPoints)
-    compScoreBoard.removeChild(computerPoints)
-    gameOver = false
-    startGame()
-});
 }
 startGame()
