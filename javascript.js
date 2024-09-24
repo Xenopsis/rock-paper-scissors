@@ -147,6 +147,7 @@ resetButton.addEventListener('click', () => {
     winMessage.innerHTML = ""
     humanScoreBoard.removeChild(humanPoints)
     compScoreBoard.removeChild(computerPoints)
+    gameOver = false
     startGame()
 });
 }
