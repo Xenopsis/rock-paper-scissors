@@ -138,30 +138,6 @@ buttons.forEach((button) => {
     })
 })
 
-// let pointsToWin = ((bestOf.value + 1) / 2);
-
-// if (computerScore === pointsToWin) {
-//     const computerWin = document.createElement("div");
-//     computerWin.classList.add("winner")
-//     computerWin.textContent = `The computer won with a ${computerScore - humanScore} lead!`
-//     humanScore = 0
-//     computerScore = 0
-//     winMessage.appendChild(computerWin)
-//     (humanPoints).textContent = humanScore;
-//     (computerPoints).textContent = computerScore
-
-// }else if (humanScore === pointsToWin) {
-//     const humanWin = document.createElement("div");
-//     humanWin.classList.add("winner")
-//     humanWin.textContent = `You won with a ${humanScore - computerScore} lead!`
-//     humanScore = 0
-//     computerScore = 0
-//     winMessage.appendChild(humanWin)
-//     (humanPoints).textContent = humanScore;
-//     (computerPoints).textContent = computerScore
-
-// }
-
 // This is for the winning system and once the winning score is achieved, it will show the message with the resetting the score
 resetButton.addEventListener('click', () => {
     humanScore = 0;
